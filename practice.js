@@ -279,6 +279,53 @@ and return the coressponding ASCII char for that value
 const getChar = (num) => String.fromCharCode(num);
 document.write(getChar(78))
 
+/*
+Q: Reverse String 
+return a string in reverse 
+e.g. reverseString('hello') == 'olleh' 
+*/
+//const reverseString = (str) => str.split('').reverse().join('')
+/*function reverseString(str){
+    let reversStr = '' 
+    for(let i = str.length-1 ; i >= 0 ; i--){
+        reversStr += str[i]
+    }
+    return reversStr
+}
+*/
+
+const reverseString = (str) => str.split('').reduce((newStr,char) => char + newStr);
+
+document.write(reverseString('hello'))
+
+/* 
+Q: Validate a Palindrome 
+return true if palindrome and false if not 
+e.g. isPalindrome('racecar') == true ,
+isPalindrome('hello') == false 
+*/
+const isPalindrome = (str) => str.split('').reverse().join('') === str ? true: false 
+document.write(isPalindrome('racecar'))
+document.write(isPalindrome('hello'))
+
+/*
+Q: Reverse An Integer 
+return an integer in reverse 
+e.g. reverseInt(521) == 125 
+*/
+
+const reverseInt = (num) => String(num).split('').reverse().join('')
+
+document.write(reverseInt(521))
+
+/*
+Q: CAPTALIZE LETTERS 
+return a string with the first letter of every word captailaized 
+e.g. capitalizeLetters('i love javascript ') == I Love Javascript 
+*/
+const capitalizeLetters = (str) => str.split(' ').map(word => word[0].toUpperCase()+ word.slice(1)).join(' ')
+document.write(capitalizeLetters('i love javascript '))
 
 Resourses : 
 -https://www.youtube.com/watch?v=N65RvNkZFGE&list=PLpc_YvcwbxaSn6jn0VaTcG8A0Grgs1GSB
+-https://www.youtube.com/watch?v=FfchU1FS2IA
