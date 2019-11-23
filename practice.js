@@ -326,6 +326,100 @@ e.g. capitalizeLetters('i love javascript ') == I Love Javascript
 const capitalizeLetters = (str) => str.split(' ').map(word => word[0].toUpperCase()+ word.slice(1)).join(' ')
 document.write(capitalizeLetters('i love javascript '))
 
+
+/*
+Q:Longest Word
+return the longest word in string 
+ex. longestWord('Hello, my name is X') ==> 'Hello'
+ex. longestWord('Hello there , my name is X') ==> ['Hello','there']
+*/
+
+
+function longestWord(str){
+    // filter Array 
+    const wordArr = str.toLowerCase().match(/[a-z0-9]+/g);
+    // sort py length 
+    const sorted = wordArr.sort((a,b)=> b.length - a.length)
+    // if multiple words an array 
+    const longestWordArray = sorted.filter((word) => word.length === sorted[0].length)
+    // check  
+    if(longestWordArray.length === 1){
+        return longestWordArray[0]
+    }return longestWordArray
+}
+document.write(longestWord('Hello , my name is X'))
+
+
+/*
+Q:Array Chunking
+split an array in to chuncked arrrys of specific length 
+ex. chunckArray([1,2,3,4,5,6,7],3) === ([1,2,3],[4,5,6],[7,8,9])
+*/
+function chunckArray(arr, len){
+    const chunckedArr = [] 
+    let i = 0 ; 
+    while (i < arr.length){
+        chunckedArr.push(arr.slice(i,i+len))
+        i += len 
+    }
+    return chunckedArr
+}
+document.write(chunckArray([1,2,3,4,5,6,7],3))
+
+/*
+Q:Flatten Array
+Take an Array of arrays and flatten to single Array 
+e.g. flatenArray([[1,2],[3,4],[5,6],[7]]) === [1,2,3,4,5,6,7]
+*/
+function  flatenArray(arr){
+    newArr = []
+    for( let i = 0 ; i < arr.length ; i++){
+        for(let j = 0 ; j < arr[i].length ; j++){
+            newArr.push(arr[i][j])
+        }
+    }
+    return newArr
+}
+const flatenArray = (arr) => arr.reduce((a,b)=> a.concat(b))
+const flatenArray = (arr) =>  [].concat.apply([],arr) // apply function 
+const flatenArray = [].concat(...arr)
+console.log(flatenArray([[1,2],[3,4],[5,6],[7]]))
+
+
+/*
+Q:Anagrams
+return true if anagram and false if not 
+ex. 'elbow' === 'below' 
+ex. 'dormitory' === 'dirty room' 
+*/
+const isAnagramx = (str1,str2) => str1.split('').sort().every((value,index) => value ===  str2.split('').sort()[index])
+console.log(isAnagramx('elbow' ,'below' ))
+
+
+
+/*
+Q:Letter Changes
+change every letter of the string to the one that sollows it 
+and captlize the vowels 
+// Z should truns to A 
+// ex. 'hello there' === 'Ifmmp UIfsf' 
+*/
+function letterChanges(str) {
+    let newStr = str.toLowerCase().replace(/[a-z]/gi, char => {
+      if (char === 'z' || char === 'Z') {
+        return 'a';
+      } else {
+        return String.fromCharCode(char.charCodeAt() + 1);
+      }
+    });
+  
+    newStr = newStr.replace(/a|e|i|o|u/gi, vowel => vowel.toUpperCase());
+  
+    return newStr;
+  }
+  
+  console.log( letterChanges('Hello There'))
+
 Resourses : 
 -https://www.youtube.com/watch?v=N65RvNkZFGE&list=PLpc_YvcwbxaSn6jn0VaTcG8A0Grgs1GSB
 -https://www.youtube.com/watch?v=FfchU1FS2IA
